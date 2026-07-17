@@ -1,0 +1,21 @@
+---
+import { SITE } from '../config/site'
+import AppIcon from './AppIcon.astro'
+---
+
+<footer class="site-footer" data-pagefind-ignore>
+  <div class="site-shell footer-inner">
+    <p class="footer-copy">
+      © {new Date().getFullYear()} {SITE.author}。示例内容仅用于主题预览。
+    </p>
+    <ul class="social-list" aria-label="外部平台">
+      {SITE.socials.map((social) => (
+        <li>
+          <a class="social-link" href={social.href} aria-label={social.label}>
+            <AppIcon name={social.icon} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</footer>

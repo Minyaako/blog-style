@@ -1,0 +1,47 @@
+---
+id: sample-engineering-architecture
+title: 技术文章样例：可扩展内容架构
+description: 用中性代码与公式演示技术长文的完整布局。
+publishedAt: 2026-07-12
+domain: engineering
+subcategory: devlogs
+tags: [样例, 内容架构]
+collections: [主题功能演示]
+cover:
+  url: /images/posts/engineering-cover.svg
+  alt: 技术主题几何占位图
+  credit: 主题仓库内置演示素材
+authors: [Demo Author]
+draft: false
+featured: true
+lang: zh-CN
+translationKey: sample-engineering-architecture
+license: CC-BY-4.0
+contentWarning: { type: none, message: '', scope: none }
+---
+
+这篇文章用于验证代码块、目录、行内代码与数学公式，不描述生产博客的真实实现细节。
+
+## 稳定标识
+
+内容模型可以把稳定标识与可读路由分开：
+
+```ts
+interface SamplePost {
+  id: string
+  slug: string
+  featured: boolean
+}
+```
+
+## 一个公式
+
+布局需要容纳行内公式 $O(n)$，也要正确处理独立公式：
+
+$$
+T(n)=T(n-1)+1
+$$
+
+## 同步边界
+
+主题仓库负责视觉、组件和交互；内容仓库负责文章、个人素材、站点身份与生产部署。样式提交验证后再同步到内容仓库。
