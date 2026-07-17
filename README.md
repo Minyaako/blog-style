@@ -21,6 +21,14 @@ pnpm test:visual
 
 `src/content/posts/` 和 `public/images/` 中的内容均为中性 fixture，用于保证主题能够独立构建并覆盖四个领域、长文目录、代码、公式、敏感内容确认、归档卡片与首页轮播。
 
+## 固定标签注册表
+
+标签定义位于 `src/content/tags/<id>.json`，文章 frontmatter 的 `tags` 只保存稳定 ID。`id` 创建后不因显示名称变化而修改，文件名必须与 `id` 一致；未知引用、重复名称或大小写归一化后重复的别名都会使构建失败。
+
+站内统一通过 `src/lib/tags.ts` 的 `getTag(id)`、`getAllTags()` 和 `getPostTags(post)` 读取标签。标签页、归档筛选、相关文章、搜索关键词和 RSS 元数据不得自行解释自由文本。
+
+Sveltia 配置位于 `public/admin/config.yml`。文章的标签字段是指向 `tags` collection 的多选 relation，可按 `label`、`id` 与 `aliases` 搜索，但写入文章的值始终是 `id`。
+
 ## 双仓工作流
 
 1. 所有页面视觉、布局、组件交互和动效变更先在本仓库完成。

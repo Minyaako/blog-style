@@ -7,6 +7,7 @@ test('technical article renders metadata, toc, code, and math', async ({ page })
   await expect(page.locator('pre code').first()).toBeVisible()
   await expect(page.locator('.katex').first()).toBeVisible()
   await expect(page.locator('[data-page-key]')).toHaveAttribute('data-page-key', 'sample-engineering-architecture')
+  await expect(page.getByRole('link', { name: '#Astro' })).toHaveAttribute('href', '/tags/astro')
 })
 
 test('sample articles use their mapped neutral SVG headers', async ({ page }) => {
